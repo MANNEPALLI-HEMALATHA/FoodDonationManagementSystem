@@ -1,0 +1,72 @@
+﻿@model FoodDonation.LogisticDonationRequestByUser
+
+@{
+    ViewData["Title"] = "LogisticDonationRequest";
+}
+
+<h1>Logistic Donation Request</h1>
+
+<h4>You can Donate Logistics</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="LogisticDonationRequest">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactNumber" class="control-label"></label>
+                <input asp-for="ContactNumber" class="form-control" />
+                <span asp-validation-for="ContactNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PurposeofDonation" class="control-label"></label>
+                <input asp-for="PurposeofDonation" class="form-control" />
+                <span asp-validation-for="PurposeofDonation" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+
+@{
+	try
+	{
+		if (TempData["LogisticDonationrequeststatus"] != null)
+		{
+			if (TempData["LogisticDonationrequeststatus"].ToString().Equals("ok"))
+			{
+				<script>
+					swal("Food Donation Request Successfully Created!", "", "success");
+				</script>
+			}
+			else
+			{
+				<script>
+					swal("Food Donation Request Failed!", "Please Try Again!", "error");
+				</script>
+			}
+
+		}
+	}
+	catch { }
+}

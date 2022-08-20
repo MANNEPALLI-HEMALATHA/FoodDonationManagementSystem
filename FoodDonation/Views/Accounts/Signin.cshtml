@@ -1,0 +1,57 @@
+﻿@model FoodDonation.Models.UserLogin
+
+@{
+    ViewData["Title"] = "Signin";
+}
+
+<h1>Signin</h1>
+<hr />
+<style>body{
+        background-image: url('https://media.gettyimages.com/photos/donation-box-with-various-food-open-cardboard-box-with-oil-vegetables-picture-id1226477136?b=1&k=20&m=1226477136&s=170667a&w=0&h=BwJ6FZLPDK7qsq8_yDACEb7bkBlsM0KMtR-o625bfWo=');
+   background-repeat:no-repeat;
+    background-size:100% 100vh;
+    /*height:100%;*/*/
+}
+</style>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Signin">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="Signin" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mt-2">
+    <a asp-action="Signup" style="color:black">SignUp</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+@{
+    try
+    {
+        if(TempData["LoginStatus"]!=null)
+        {
+            <script>
+            swal("Login Failed!", "Incorrect UserId/Password!", "error");
+            </script>
+        }
+    }
+    catch { }
+}

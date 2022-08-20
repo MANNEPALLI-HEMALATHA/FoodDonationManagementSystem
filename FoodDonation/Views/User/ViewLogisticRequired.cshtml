@@ -1,0 +1,49 @@
+﻿@model IEnumerable<FoodDonation.LogisticRequest>
+
+@{
+    ViewData["Title"] = "ViewLogisticRequired";
+}
+
+<h1>View Logistic Required</h1>
+<h4> list of required logistic (raised by admin)</h4>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PurposeofDonation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PurposeofDonation)
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>
